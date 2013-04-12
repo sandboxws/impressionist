@@ -4,7 +4,7 @@ class Impression
 
   attr_accessible :impressionable_type, :impressionable_field, :impressionable_id, :user_id,
   :controller_name, :action_name, :view_name, :request_hash, :ip_address,
-  :session_hash, :message, :referrer
+  :session_hash, :message, :referrer, :browser
 
   belongs_to :impressionable, polymorphic: true
 
@@ -17,6 +17,7 @@ class Impression
   field :session_hash
   field :message
   field :referrer
+  field :browser
 
   set_callback(:create, :after) do |doc|
     unless impressionable_id.nil?
